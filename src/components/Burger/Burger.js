@@ -11,7 +11,6 @@ const Burger = props => {
     }).reduce((prevEl, currEl)=>{
         return prevEl.concat(currEl);
     }, []);
-    console.log(burgerIngredients);
     if(burgerIngredients.length === 0){
         burgerIngredients = <p>Please start adding ingredients!</p>;
     }
