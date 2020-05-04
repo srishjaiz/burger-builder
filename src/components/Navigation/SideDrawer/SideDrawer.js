@@ -7,7 +7,9 @@ const SideDrawer = props => {
     let showClass = props.showBackDrop ? classes.Open : classes.Close;
     return(
         <>
-            <BackDrop clicked={props.closeSideDrawer} show={props.showBackDrop}/>
+            <div className={classes.BackDrop}>
+                <BackDrop clicked={props.closeSideDrawer} show={props.showBackDrop}/>
+            </div>
             <div className={[classes.SideDrawer, showClass].join(' ')}>
                 <div className={classes.Logo}>
                     <Logo/>
