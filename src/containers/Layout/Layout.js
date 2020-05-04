@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Aux from '../../hoc/Auxilliary';
 import classes from './Layout.module.css';
-import ToolBar from '../Navigation/ToolBar/ToolBar';
-import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
+import ToolBar from '../../components/Navigation/ToolBar/ToolBar';
+import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 const Layout = props => {
     let [showBackDropState, setShowBackDropState] = useState({
         show: true
