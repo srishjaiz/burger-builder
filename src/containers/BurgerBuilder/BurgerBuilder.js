@@ -66,7 +66,8 @@ class BurgerBuilder extends Component{
             this.setState({loading: false, purchasing: false})
         })
         .catch(err=>{
-            this.setState({loading: false, purchasing: false})
+            this.setState({loading: false, purchasing: false});
+            this.props.errorHandler(err);
         })
     }
     addIngredientHandler = type => {
