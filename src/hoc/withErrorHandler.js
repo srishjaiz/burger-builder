@@ -1,41 +1,18 @@
 import React, { Component } from 'react';
 import Modal from '../components/UI/Modal/Modal';
 
-const withErrorHandler = (WrapperComponent, Axios) =>{
+const withErrorHandler = (WrappedComponent, Axios) =>{
     return class extends Component {
         constructor(props){
             super(props);
             this.state = {
                 error: null
             }
-            // Axios.interceptors.request.use(req =>{
-            //     this.setState({
-            //         error: null
-            //     })
-            //     return req;
-            // })
-            // Axios.interceptors.response.use(res => res, err =>{
-            //     this.setState({
-            //         error: err
-            //     })
-            // })
         }
-        componentWillMount(){
-            this.reqInterceptor = Axios.interceptors.request.use(req =>{
-                this.setState({
-                    error: null
-                })
-                return req;
+        updateErrorStateHandler = (err)=>{
+            this.setState({
+                error: err
             })
-            this.resInterceptor = Axios.interceptors.response.use(res => res, err =>{
-                this.setState({
-                    error: err
-                })
-            })
-        }
-        componentWillUnmount(){
-            Axios.interceptors.request.eject(this.reqInterceptor);
-            Axios.interceptors.response.eject(this.resInterceptor);
         }
         errorHandledHandler = ()=>{
             this.setState({
@@ -51,7 +28,7 @@ const withErrorHandler = (WrapperComponent, Axios) =>{
                     >
                         {this.state.error && this.state.error.message}
                     </Modal>    
-                    <WrapperComponent {...this.props}/>
+                    <WrappedComponent {...this.props} errorHandler = {(err)=>{this.updateErrorStateHandler(err)}}/>
                 </>
             )
         }

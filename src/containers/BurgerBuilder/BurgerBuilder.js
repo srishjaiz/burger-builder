@@ -34,7 +34,8 @@ class BurgerBuilder extends Component{
             })
         })
         .catch(err =>{
-            this.setState({error: err})
+            this.setState({error: err});
+            this.props.errorHandler(err);
         })
     }
     purchaseHandler = () =>{
@@ -146,9 +147,9 @@ class BurgerBuilder extends Component{
         return (
             <Aux>
                 <Modal 
-                show = {this.state.purchasing}
-                modalClosed = {this.cancelPurchaseHandler}>
-                    {orderSummary}
+                    show = {this.state.purchasing}
+                    modalClosed = {this.cancelPurchaseHandler}>
+                        {orderSummary}
                 </Modal>
                 {burger}
             </Aux>
