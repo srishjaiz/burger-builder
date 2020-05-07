@@ -19,7 +19,6 @@ const Layout = props => {
         <Aux>
             <ToolBar drawerToggle = {drawerToggle} closeSideDrawer = {sideDrawerHandler} showBackDrop={showBackDropState.show}/>
             <SideDrawer closeSideDrawer = {sideDrawerHandler} showBackDrop={showBackDropState.show}/>
-            <div>Toolbar, sidebar, backdrop</div>
             <main 
             className={classes.Content}>
                 {props.children}
