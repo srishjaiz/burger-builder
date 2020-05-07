@@ -3,16 +3,16 @@ import classes from './Modal.module.css';
 import BackDrop from '../BackDrop/BackDrop';
 class Modal extends Component{
     shouldComponentUpdate(nextProps, nextState){
-        if(nextProps.show === this.props.show){
-            return false;
+        if(nextProps.show !== this.props.show || this.props.children !== nextProps.children){
+            return true;
         }
-        return true;
+        return false;
     }
 
     render(){
         return(
             <>
-                <BackDrop clicked={this.props.cancelPurchase} show = {this.props.show}/>
+                <BackDrop clicked={this.props.modalClosed} show = {this.props.show}/>
                 <div 
                 className={classes.Modal}
                 style = {{
